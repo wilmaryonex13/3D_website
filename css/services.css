@@ -1,0 +1,605 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Raleway", sans-serif;
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+.container {
+  max-width: 1600px;
+  margin: auto;
+  padding: 0 4rem;
+  box-sizing: border-box;
+  
+}
+.navbar {
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 100;
+}
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+}
+.logo { display: flex; align-items: center; gap: 0.5rem; }
+.logo img { height: 120px; width: auto; }
+.brand-name {
+  font-family: 'Impact', sans-serif;
+  font-size: 3.5rem;
+  color: #0e7e0f;
+}
+.logo a{
+    text-decoration: none;
+  }
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+.nav-links a {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #02580a;
+  font-weight: bold;
+}
+.nav-links a:hover {
+  background-color: #02580a;
+  color: white;
+  border-radius: 4px;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 101;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #02580a;
+  display: block;
+  transition: 0.3s;
+}
+
+main {
+  /* padding: 6rem 2rem 2rem 2rem; */
+  padding: 0;
+  background: white;
+  min-height: 60vh;
+}
+
+h1 { color: #02580a; 
+    margin-bottom: 1rem; 
+    text-align: center;
+}
+
+/* Main Content Section */
+
+.services-main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+.service-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 0rem;
+    flex-wrap: wrap;
+}
+
+.service-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.main-paragraph {
+    flex: 1 1 50%;
+    max-width: 600px;
+}
+
+.main-image-holder {
+    flex: 1 1 45%;
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-color: #841515;
+    border-radius: 8px;
+}
+
+/* Demo placeholders, replace with real images */
+.image-1 {
+    background-image: url("/images/Land_Surveys_1.jpg");
+}
+
+.image-2 {
+    background-image: url("/images/Land_Surveys_2.jpg");
+}
+  
+  /* Responsive fallback */
+  @media (max-width: 768px) {
+    .service-block,
+    .service-block.reverse {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .main-paragraph, .main-image-holder {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+
+    .main-image-holder {
+        min-width: 100%;
+        height: auto;
+        /* padding:0px 0px; */
+        /* aspect-ratio: 16 / 9; */
+    }
+  }
+
+  @media (max-width: 500px) {
+    .main-image-holder {
+      width: 90vw !important;
+      min-width: 0 !important;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      margin: 0 auto;
+      padding:0;
+    }
+
+    main > .container {
+        padding: 0 0.5rem !important; 
+         
+    }
+  }
+  
+
+
+
+/* Contact Section */
+.contact-section {
+    background: #f7f7f7 url('/images/topo-background.png') no-repeat center;
+    background-size: cover;
+    padding: 4rem 1rem;
+    color: #222;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .contact-info {
+    flex: 1 1 300px;
+    min-width: 280px;
+  }
+  
+  .contact-info h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #02580a;
+  }
+  
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  
+  .contact-detail i {
+    color: #02580a;
+    margin-top: 0.3rem;
+    min-width: 16px;
+  }
+  
+  .contact-detail a {
+    color: #222;
+    text-decoration: underline;
+  }
+  
+  .contact-form-wrapper {
+    flex: 1 1 30vw;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .contact-form h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-row input,
+  .form-row textarea {
+    flex: 1 1 45%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  
+  .form-row textarea {
+    flex: 1 1 100%;
+    resize: vertical;
+  }
+  
+  .btn-submit {
+    background-color: #02580a;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .btn-submit:hover {
+    background-color: #14821f;
+  }
+  
+  /* Mobile fixes */
+  @media (max-width: 768px) {
+    .form-row {
+      flex-direction: column;
+    }
+  
+    .form-row input,
+    .form-row textarea {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+  
+    .contact-form {
+      padding: 1.5rem;
+      width: 95vw;
+    }
+  
+    .contact-info {
+      text-align: center;
+    }
+  }
+
+@media (max-width: 1200px){
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+      }
+}
+
+
+.site-footer {
+  background: #034412;
+  color: #ccc;
+  font-size: 0.9rem;
+  padding-top: 4rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 0 4rem;
+}
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
+  font-family: 'Impact', sans-serif;
+}
+.footer-logo .highlight { color: #ffffff; }
+.footer-contact h4,
+.footer-office h4,
+.footer-social h4 {
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+}
+.footer-contact a { color: #ccc; }
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.social-icons a {
+  color: white;
+  font-size: 1.2rem;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+  font-size: 0.8rem;
+}
+.back-to-top {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.back-to-top:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1200px) {
+  .footer-grid,
+  .footer-bottom,
+  .contact-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid #eee;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+}
+
+/* @media (max-width: 900px){
+    .hamburger {
+        display: flex;
+      }
+    
+    .nav-links.active {
+        display: flex;
+      }
+} */
+
+@media (max-width: 650px){
+    .brand-name {
+        display: none;
+    }
+}
+
+
+  /* Footer */
+
+  .site-footer {
+    background: #034412 url('/images/topographic-lines-bg.png') no-repeat center center;
+    background-size: cover;
+    color: #ccc;
+    font-size: 0.9rem;
+    padding-top: 4rem;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: left;
+  }
+  
+  .footer-logo {
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+    font-family: 'Impact', sans-serif;
+  }
+  
+  .footer-logo .highlight {
+    color: #ffffff;
+  }
+
+  .footer-links h4,
+  .footer-contact h4,
+  .footer-office h4,
+  .footer-social h4 {
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links a {
+    color: #ccc;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-middle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem 0;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+  }
+  
+  .footer-contact,
+  .footer-office,
+  .footer-social {
+    flex: 1 1 200px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-contact a {
+    color: #ccc;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .social-icons .x {
+    position: relative;
+    padding-top: 0px;
+    top: 0.2rem;
+  }
+  
+  .social-icons a {
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+    color: white;
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    font-size: 0.8rem;
+  }
+  
+  .back-to-top {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .back-to-top:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-middle {
+      flex-direction: column;
+    }
+  
+    .footer-bottom {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    font-size: 0.8rem;
+  }
+  
+  /* Privacy Policy */
+
+.privacy-agreement {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #555;
+  }
+  
+  .privacy-agreement a {
+    color: #02580a;
+    text-decoration: underline;
+  }
+  
+  .privacy-agreement a:hover {
+    color: #14821f;
+  }
+
+
+.privacy-policy-label {
+    text-align: left;
+}
+
+.footer-logo-href{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+/* Thank you */
+
+main.thank-you-page {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .thank-you-page h1 {
+    color: #02580a;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .thank-you-page p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  .thank-you-page a.button {
+    display: inline-block;
+    background-color: #02580a;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .thank-you-page a.button:hover {
+    background-color: #14821f;
+  }
