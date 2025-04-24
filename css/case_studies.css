@@ -155,11 +155,11 @@ h1 { color: #02580a;
 /* Demo placeholders, replace with real images */
 
 /* .image-1 {
-    background-image: url("/images/Land_Surveys_1.jpg");
+    background-image: url("./images/Land_Surveys_1.jpg");
 }
 
 .image-2 {
-    background-image: url("/images/Land_Surveys_2.jpg");
+    background-image: url("./images/Land_Surveys_2.jpg");
 } */
   
   /* Responsive fallback */
@@ -199,7 +199,7 @@ h1 { color: #02580a;
 
 /* Contact Section */
 .contact-section {
-    background: #f7f7f7 url('/images/topo-background.png') no-repeat center;
+    background: #f7f7f7 url('./images/topo-background.png') no-repeat center;
     background-size: cover;
     padding: 4rem 1rem;
     color: #222;
@@ -437,7 +437,7 @@ h1 { color: #02580a;
   /* Footer */
 
   .site-footer {
-    background: #034412 url('/images/topographic-lines-bg.png') no-repeat center center;
+    background: #034412 url('./images/topographic-lines-bg.png') no-repeat center center;
     background-size: cover;
     color: #ccc;
     font-size: 0.9rem;
