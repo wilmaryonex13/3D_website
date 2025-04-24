@@ -152,7 +152,7 @@
   .services {
     padding: 4rem 0;
     /* background: #cfd3cf; */
-    background-image: url("/3D_website/images/white_concrete_wall.png");
+    background-image: url("/images/white_concrete_wall.png");
   }
   
   /* .services-grid {
@@ -272,7 +272,7 @@
   
 
   /* .logo {
-    background-image: url("/3D_website/images/3D_Logo_Darkgreen_Large.jpg");
+    background-image: url("/images/3D_Logo_Darkgreen_Large.jpg");
     width: 150px;
     height: 100px;
     background-size: contain;
@@ -317,7 +317,7 @@
   }
 
   .about {
-    background-image: url("/3D_website/images/Company_Profile_Background_3.png");
+    background-image: url("/images/Company_Profile_Background_3.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -357,31 +357,31 @@
   }
   
   .img-1 {
-    background-image: url("/3D_website/images/Land_Surveys_1.jpg");
+    background-image: url("/images/Land_Surveys_1.jpg");
   }
 
   .img-2 {
-    background-image: url("/3D_website/images/Measured_Surveys_1.jpg");
+    background-image: url("/images/Measured_Surveys_1.jpg");
   }
 
   .img-3 {
-    background-image: url("/3D_website/images/Laser_Scans_1.jpg");
+    background-image: url("/images/Laser_Scans_1.jpg");
   }
 
   .img-5 {
-    background-image: url("/3D_website/images/Engineering_Surveys_1.jpg");
+    background-image: url("/images/Engineering_Surveys_1.jpg");
   }
   
   .img-4 {
-    background-image: url("/3D_website/images/Utility_Surveys_1.jpg");
+    background-image: url("/images/Utility_Surveys_1.jpg");
   }
 
   .img-6 {
-    background-image: url("/3D_website/images/Monitoring_1.jpg");
+    background-image: url("/images/Monitoring_1.jpg");
   }
 
   .img-7 {
-    background-image: url("/3D_website/images/Photogrammetry_1.jpg");
+    background-image: url("/images/Photogrammetry_1.jpg");
   }
 
 
@@ -811,7 +811,7 @@
   /* Footer */
 
   .site-footer {
-    background: #034412 url('/3D_website/images/topographic-lines-bg.png') no-repeat center center;
+    background: #034412 url('/images/topographic-lines-bg.png') no-repeat center center;
     background-size: cover;
     color: #ccc;
     font-size: 0.9rem;
@@ -939,7 +939,7 @@
 
 /* Contact Section */
 .contact-section {
-  background: #f7f7f7 url('/3D_website/images/topo-background.png') no-repeat center;
+  background: #f7f7f7 url('/images/topo-background.png') no-repeat center;
   background-size: cover;
   padding: 4rem 1rem;
   color: #222;
@@ -1078,7 +1078,7 @@
 
 .offerings-section {
   padding: 4rem 2rem;
-  background-image: url("/3D_website/images/concrete_wall.png");
+  background-image: url("/images/concrete_wall.png");
   /* height: 40rem; */
 }
 
