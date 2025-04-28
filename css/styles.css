@@ -1460,3 +1460,14 @@
   color: white;
 }
 
+.logo-combo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo-section img{
+  height: 60px; width: auto;
+  padding-bottom: 0.5rem;
+}
+

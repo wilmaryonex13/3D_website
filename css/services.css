@@ -14,7 +14,7 @@ body {
 }
 .navbar {
   width: 100%;
-  background: white;
+  background:#02580a;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   position: relative;
   z-index: 100;
@@ -25,30 +25,41 @@ body {
   align-items: center;
   padding: 1.5rem 4rem;
 }
+
 .logo { display: flex; align-items: center; gap: 0.5rem; }
-.logo img { height: 120px; width: auto; }
+
+.logo img { 
+    height: 100px;
+    width: auto;
+    padding-right: 0.8rem;
+}
+
 .brand-name {
   font-family: 'Impact', sans-serif;
   font-size: 3.5rem;
-  color: #0e7e0f;
+  color: #ffffff;
 }
+
 .logo a{
     text-decoration: none;
   }
 .nav-links {
   display: flex;
   gap: 1rem;
+
 }
 .nav-links a {
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: #02580a;
+  color: white;
   font-weight: bold;
 }
 .nav-links a:hover {
-  background-color: #02580a;
-  color: white;
+  background-color: #ffffff;
+  color:#02580a;
   border-radius: 4px;
+  /* transition: background 0.3s; */
+  transition: all 0.3s ease;
 }
 
 .hamburger {
@@ -61,9 +72,19 @@ body {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: #02580a;
+  background-color: #ffffff;
   display: block;
   transition: 0.3s;
+}
+
+/* #mobile-nav{
+    color:#02580a
+} */
+
+@media (max-width: 768px) {
+    .nav-links.active a {
+      color: #02580a !important;
+    }
 }
 
 main {
@@ -563,6 +584,16 @@ h1 { color: #02580a;
     color: white;
 }
 
+.logo-combo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo-section img{
+  height: 60px; width: auto;
+  padding-bottom: 0.5rem;
+}
 
 
 /* Thank you */
