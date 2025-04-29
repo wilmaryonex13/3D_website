@@ -14,10 +14,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <link rel="icon" href="./images/favicon.png" type="image/png" /> 
 
-  <link rel="preload" as="image" href="posters/drone-end.jpg">
-  <link rel="preload" as="image" href="posters/laser-end.jpg">
-  <link rel="preload" as="video" href="videos/drone-to-laser.mp4" type="video/mp4">
-  <link rel="preload" as="video" href="videos/laser-to-drone.mp4" type="video/mp4">
+  <!-- <link rel="preload" as="image" href="posters/drone-end.jpg">
+  <link rel="preload" as="image" href="posters/laser-end.jpg"> -->
+  <!-- <link rel="preload" as="video" href="videos/drone-to-laser.mp4" type="video/mp4">
+  <link rel="preload" as="video" href="videos/laser-to-drone.mp4" type="video/mp4"> -->
 </head>
 
 <body>
@@ -66,6 +66,7 @@
 
   <section class="output-viewer">
     <div class="container">
+
       <br>
       <br>
 
@@ -739,8 +740,9 @@
 
     // When the video ends, freeze at the last frame
     video.onended = () => {
+      video.pause();
       video.poster = posters[targetView]; // Show still frame
-      video.src = ''; // Clear video source to stop looping
+      // video.src = '';
     };
   }
 
