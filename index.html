@@ -723,32 +723,64 @@
     'laser->drone': 'videos/laser-to-drone.mp4',
   };
 
+  // function switchTo(targetView) {
+  //   if (targetView === currentView) return;
+
+  //   const key = `${currentView}->${targetView}`;
+  //   const transitionVideo = transitions[key];
+
+  //   if (!transitionVideo) {
+  //     alert("Transition video not found.");
+  //     return;
+  //   }
+
+  //   video.src = transitionVideo;
+  //   video.play();
+  //   currentView = targetView;
+
+  //   // When the video ends, freeze at the last frame
+  //   video.onended = () => {
+  //     video.pause();
+  //     video.poster = posters[targetView]; // Show still frame
+  //     // video.currentTime = video.duration; // Freeze exactly at the last frame
+  //   };
+  // }
+
   function switchTo(targetView) {
-    if (targetView === currentView) return;
+  if (targetView === currentView) return;
 
-    const key = `${currentView}->${targetView}`;
-    const transitionVideo = transitions[key];
+  const key = `${currentView}->${targetView}`;
+  const transitionVideo = transitions[key];
 
-    if (!transitionVideo) {
-      alert("Transition video not found.");
-      return;
-    }
-
-    video.src = transitionVideo;
-    video.play();
-    currentView = targetView;
-
-    // When the video ends, freeze at the last frame
-    video.onended = () => {
-      video.pause();
-      video.poster = posters[targetView]; // Show still frame
-      // video.src = '';
-    };
+  if (!transitionVideo) {
+    alert("Transition video not found.");
+    return;
   }
+
+  video.poster = posters[currentView]; // keep current poster until ready
+
+  video.src = transitionVideo;
+  video.load();
+  video.play();
+  currentView = targetView;
+
+  video.oncanplaythrough = () => {
+    setTimeout(() => {
+      video.poster = ""; // Now remove poster cleanly after delay
+    }, 100); // delay 100ms or tweak to 200ms if needed
+  };
+
+  video.onended = () => {
+    video.pause();
+    video.poster = posters[targetView]; // Set poster after video ends
+  };
+}
+
 
   // Initialize to DRONE view
   window.onload = () => {
     video.poster = posters['drone']; // Show drone still frame
+    // video.currentTime = 0;
   };
 </script>
 
