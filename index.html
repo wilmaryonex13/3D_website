@@ -59,6 +59,24 @@
     </div>
   </section>
 
+  <section class="output-viewer">
+    <div class="container">
+      <br>
+      <br>
+
+      <video id="viewer" autoplay muted playsinline></video>
+
+      <div class="buttons">
+        <button onclick="switchTo('drone')">DRONE</button>
+        <button onclick="switchTo('laser')">LASER SCAN</button>
+      </div>
+      
+      <br>
+      <br>
+
+    </div>
+  </section>
+
   <section class="services" id="services">
     <div class="container">
       <div class="services-grid">
@@ -679,6 +697,54 @@
     }
   });
 </script>
+
+<!-- Output Viewer -->
+
+<script>
+  const video = document.getElementById('viewer');
+
+  // Current state (e.g., 'drone', 'laser')
+  let currentView = 'drone';
+
+  // Preload and set last frame as poster
+  const posters = {
+    drone: 'posters/drone-end.jpg',
+    laser: 'posters/laser-end.jpg',
+  };
+
+  const transitions = {
+    'drone->laser': 'videos/drone-to-laser.mp4',
+    'laser->drone': 'videos/laser-to-drone.mp4',
+  };
+
+  function switchTo(targetView) {
+    if (targetView === currentView) return;
+
+    const key = `${currentView}->${targetView}`;
+    const transitionVideo = transitions[key];
+
+    if (!transitionVideo) {
+      alert("Transition video not found.");
+      return;
+    }
+
+    video.src = transitionVideo;
+    video.play();
+    currentView = targetView;
+
+    // When the video ends, freeze at the last frame
+    video.onended = () => {
+      video.poster = posters[targetView]; // Show still frame
+      video.src = ''; // Clear video source to stop looping
+    };
+  }
+
+  // Initialize to DRONE view
+  window.onload = () => {
+    video.poster = posters['drone']; // Show drone still frame
+  };
+</script>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

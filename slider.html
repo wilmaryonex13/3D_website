@@ -1,85 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You | 3D Services</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Team Page with Responsive Bio Panel</title>
   <style>
-    main.thank-you-page {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 3rem 1rem;
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 2rem;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .thank-you-page h1 {
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
       color: #02580a;
-      font-size: 2.5rem;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .team-member {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 1rem;
+      text-align: center;
+      width: 220px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-member img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      border-radius: 12px;
       margin-bottom: 1rem;
     }
 
-    .thank-you-page p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      max-width: 600px;
+    .team-member h3 {
+      margin: 0.5rem 0 0.2rem;
+      font-size: 1.2rem;
+      color: #034412;
     }
 
-    .thank-you-page a.button {
-      display: inline-block;
-      background-color: #02580a;
-      color: white;
-      text-decoration: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
+    .team-member p {
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease;
+      z-index: 999;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .bio-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%;
+      background: #ffffff;
+      box-shadow: -3px 0 15px rgba(0,0,0,0.2);
+      overflow: hidden;
+      opacity: 0;
+      transition: width 0.5s ease, opacity 0.5s ease;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bio-panel.active {
+      width: 50vw;
+      opacity: 1;
+    }
+
+    .bio-content {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      max-width: 80%;
+    }
+
+    .bio-panel.active .bio-content {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .bio-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .bio-text {
+      flex: 1;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #02580a;
+    }
+
+    .bio-text h3 {
+      color: #034412;
+      margin-bottom: 0.3rem;
+    }
+
+    .bio-text p {
+      color: #333;
+      margin-bottom: 0.7rem;
+      font-size: 0.95rem;
+    }
+
+    .bio-text a {
+      color: #02580a;
       font-weight: bold;
-      transition: background-color 0.2s ease-in-out;
+      text-decoration: none;
     }
 
-    .thank-you-page a.button:hover {
-      background-color: #14821f;
+    @media (max-width: 768px) {
+      .bio-panel.active {
+        width: 90vw;
+      }
+
+      .bio-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .bio-image {
+        margin-bottom: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header (you can reuse your site's header/nav) -->
-  <header class="navbar">
-    <div class="container">
-      <div class="logo">
-        <a href="index.html">
-          <img src="/images/SigLogo.png" alt="3D Services Logo" />
-        </a>
-        <a href="index.html">
-          <span class="brand-name">3D Services</span>
-        </a>
-      </div>
-      <nav class="nav-links">
-        <a href="index.html#about">About</a>
-        <a href="index.html#services">Services</a>
-        <a href="index.html#sectors">Sectors</a>
-        <a href="index.html#case_studies">Case Studies</a>
-        <a href="index.html#contact">Contact Us</a>
-      </nav>
+  <h2>Meet the Team</h2>
+  <div class="team-grid">
+    <div class="team-member"
+         data-bio="Nick has led our finance and admin team for over 15 years, bringing innovation and structure to the heart of our company. He specializes in operational excellence and team leadership.">
+      <img src="https://via.placeholder.com/150" alt="Nick Smith">
+      <h3>Nick Smith</h3>
+      <p><strong>Managing Director</strong></p>
+      <p>nick@example.com</p>
     </div>
-  </header>
 
-  <!-- Main Thank You Section -->
-  <main class="thank-you-page">
-    <h1>Thank You!</h1>
-    <p>Your message has been successfully sent. We’ll be in touch as soon as possible.</p>
-    <a href="index.html" class="button">Back to Home</a>
-  </main>
-
-  <!-- Footer (optional, or reuse your site footer) -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 3D Services. All rights reserved.</p>
+    <div class="team-member"
+         data-bio="Cliff oversees our CAD, research, and development initiatives. With 20+ years of experience, he continually brings fresh ideas and technical excellence to the forefront of our projects.">
+      <img src="https://via.placeholder.com/150" alt="Cliff Grant">
+      <h3>Cliff Grant</h3>
+      <p><strong>Senior Director</strong></p>
+      <p>cliff@example.com</p>
     </div>
-  </footer>
+
+    <div class="team-member"
+         data-bio="David leads our engineering and monitoring teams, ensuring our clients receive precise, innovative solutions. His expertise spans structural monitoring, surveying, and complex project management.">
+      <img src="https://via.placeholder.com/150" alt="David Gibbs">
+      <h3>David Gibbs</h3>
+      <p><strong>Senior Director</strong></p>
+      <p>david@example.com</p>
+    </div>
+  </div>
+
+  <!-- Background overlay -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Bio Side Panel -->
+  <div id="bio-panel" class="bio-panel">
+    <span class="close-btn" onclick="closeBio()">&times;</span>
+    <div class="bio-content">
+      <img id="bio-image" class="bio-image" src="" alt="Profile Image">
+      <div class="bio-text" id="bio-details"></div>
+    </div>
+  </div>
+
+  <script>
+    const teamMembers = document.querySelectorAll('.team-member');
+    const bioPanel = document.getElementById('bio-panel');
+    const bioDetails = document.getElementById('bio-details');
+    const overlay = document.getElementById('overlay');
+    const bioImage = document.getElementById('bio-image');
+
+    teamMembers.forEach(member => {
+      member.addEventListener('click', () => {
+        const name = member.querySelector('h3').innerText;
+        const title = member.querySelector('p strong').innerText;
+        const email = member.querySelectorAll('p')[1]?.innerText || '';
+        const imgSrc = member.querySelector('img').src;
+        const description = member.getAttribute('data-bio') || '';
+
+        bioDetails.innerHTML = `
+          <h3>${name}</h3>
+          <p><strong>${title}</strong></p>
+          <p>${description}</p>
+          <p><a href="mailto:${email}">${email}</a></p>
+        `;
+        bioImage.src = imgSrc;
+
+        bioPanel.classList.add('active');
+        overlay.classList.add('active');
+      });
+    });
+
+    function closeBio() {
+      bioPanel.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    overlay.addEventListener('click', closeBio);
+  </script>
 
 </body>
 </html>
