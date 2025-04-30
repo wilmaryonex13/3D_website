@@ -71,7 +71,7 @@
       <br>
       <br>
 
-      <video id="viewer" autoplay muted playsinline></video>
+      <video id="viewer" autoplay muted playsinline preload="auto"></video>
 
       <div class="buttons">
         <button onclick="switchTo('drone')">DRONE</button>
@@ -715,13 +715,13 @@
 
   // Preload and set last frame as poster
   const posters = {
-    drone: 'posters/drone-end-502-282.webp',
-    laser: 'posters/laser-end-502-282.webp',
+    drone: 'posters/drone-end.jpg',
+    laser: 'posters/laser-end.jpg',
   };
 
   const transitions = {
-    'drone->laser': 'videos/drone-to-laser-502-282.webm',
-    'laser->drone': 'videos/laser-to-drone-502-282.webm',
+    'drone->laser': 'videos/drone-to-laser.mp4',
+    'laser->drone': 'videos/laser-to-drone.mp4',
   };
 
   // CODE WITHOUT DELAY
