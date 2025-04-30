@@ -1481,14 +1481,14 @@
   background-color: #3c3c3c;
 }
 
-/* .output-viewer video {
+.output-viewer video {
   width: 100%;
   max-width: 100%;
   height: auto;
   border-radius: 0px;
   background: #000;
   align-items: center;
-} */
+}
 
 /* /* .output-viewer > .video {
   width: 90%;
@@ -1582,14 +1582,14 @@ button:hover {
   margin: 0 auto;
 } */
 
-canvas {
-  width: 100%;           /* stretch horizontally */
-  max-width: 100%;     /* limit if needed */
-  height: auto;          /* keep aspect ratio */
+/* canvas {
+  width: 100%;    
+  max-width: 100%;  
+  height: auto; 
   display: block;
   margin: 0 auto;
   background: #000;
-}
+} */
 
 @media (max-width: 768px) {
 
