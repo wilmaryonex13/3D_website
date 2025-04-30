@@ -15,8 +15,8 @@
   <link rel="icon" href="./images/favicon.png" type="image/png" /> 
 
   <!-- <link rel="preload" as="image" href="posters/drone-end.jpg">
-  <link rel="preload" as="image" href="posters/laser-end.jpg"> -->
-  <!-- <link rel="preload" as="video" href="videos/drone-to-laser.mp4" type="video/mp4">
+  <link rel="preload" as="image" href="posters/laser-end.jpg">
+  <link rel="preload" as="video" href="videos/drone-to-laser.mp4" type="video/mp4">
   <link rel="preload" as="video" href="videos/laser-to-drone.mp4" type="video/mp4"> -->
 </head>
 
@@ -767,7 +767,7 @@
   video.oncanplaythrough = () => {
     setTimeout(() => {
       video.poster = ""; // Now remove poster cleanly after delay
-    }, 100); // delay 100ms or tweak to 200ms if needed
+    }, 200); // delay 100ms or tweak to 200ms if needed
   };
 
   video.onended = () => {
