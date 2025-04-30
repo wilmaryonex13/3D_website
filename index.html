@@ -18,6 +18,7 @@
   <link rel="preload" as="image" href="posters/laser-end.jpg">
   <link rel="preload" as="video" href="videos/drone-to-laser.mp4" type="video/mp4">
   <link rel="preload" as="video" href="videos/laser-to-drone.mp4" type="video/mp4"> -->
+
 </head>
 
 <body>
@@ -723,6 +724,8 @@
     'laser->drone': 'videos/laser-to-drone.mp4',
   };
 
+  // CODE WITHOUT DELAY
+
   // function switchTo(targetView) {
   //   if (targetView === currentView) return;
 
@@ -744,7 +747,15 @@
   //     video.poster = posters[targetView]; // Show still frame
   //     // video.currentTime = video.duration; // Freeze exactly at the last frame
   //   };
+
+  //     // Initialize to DRONE view
+  //   window.onload = () => {
+  //   video.poster = posters['drone']; // Show drone still frame
+  //   // video.currentTime = 0;
+  // };
   // }
+
+  // CODE WITH DELAY
 
   function switchTo(targetView) {
   if (targetView === currentView) return;
@@ -767,7 +778,7 @@
   video.oncanplaythrough = () => {
     setTimeout(() => {
       video.poster = ""; // Now remove poster cleanly after delay
-    }, 200); // delay 100ms or tweak to 200ms if needed
+    }, 100); // delay 100ms or tweak to 200ms if needed
   };
 
   video.onended = () => {
@@ -776,14 +787,62 @@
   };
 }
 
-
   // Initialize to DRONE view
   window.onload = () => {
     video.poster = posters['drone']; // Show drone still frame
     // video.currentTime = 0;
   };
+
 </script>
 
+
+<!-- 
+<script>
+  const video = document.getElementById('viewer');
+let currentView = 'drone';
+
+const transitions = {
+  'drone->laser': 'videos/drone-to-laser.mp4',
+  'laser->drone': 'videos/laser-to-drone.mp4',
+};
+
+// Show first frame of the transition video to simulate a still view
+window.onload = () => {
+  video.src = transitions['drone->laser']; // or any transition video starting from 'drone'
+  video.load();
+  video.onloadeddata = () => {
+    video.pause();
+    video.currentTime = 0; // Freeze at first frame
+  };
+};
+
+function switchTo(targetView) {
+  if (targetView === currentView) return;
+
+  const key = `${currentView}->${targetView}`;
+  const transitionVideo = transitions[key];
+
+  if (!transitionVideo) {
+    alert("Transition video not found.");
+    return;
+  }
+
+  video.src = transitionVideo;
+  video.load();
+
+  video.onloadeddata = () => {
+    video.play();
+  };
+
+  video.onended = () => {
+    video.pause();
+    video.currentTime = video.duration; // Freeze at last frame
+  };
+
+  currentView = targetView;
+}
+
+</script> -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
