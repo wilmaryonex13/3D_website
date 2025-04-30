@@ -793,6 +793,41 @@
     // video.currentTime = 0;
   };
 
+  // CODE WITH BACKGROUND IMAGE AND DEFUALT VIEWER CONSIDERATION
+
+//   function switchTo(targetView) {
+//   if (targetView === currentView) return;
+
+//   const key = `${currentView}->${targetView}`;
+//   const transitionVideo = transitions[key];
+
+//   if (!transitionVideo) {
+//     alert("Transition video not found.");
+//     return;
+//   }
+
+//   // 🔁 Set background image to current view's poster
+//   video.style.backgroundImage = `url(${posters[currentView]})`;
+//   video.poster = posters[currentView]; // Optional fallback
+//   video.src = transitionVideo;
+//   video.load();
+//   video.play();
+//   currentView = targetView;
+
+//   video.oncanplaythrough = () => {
+//     setTimeout(() => {
+//       video.poster = ""; // Remove poster if used
+//       video.style.backgroundImage = "none"; // Fade out bg-image
+//     }, 100);
+//   };
+
+//   video.onended = () => {
+//     video.pause();
+//     video.poster = posters[targetView];
+//     video.style.backgroundImage = `url(${posters[targetView]})`; // 🔁 Set background for new frozen state
+//   };
+// }
+
 </script>
 
 
