@@ -46,7 +46,8 @@
           <h2>Meet the team</h2>
           <div class="team-grid">
 
-            <div class="team-member">
+            <div class="team-member"
+                 data-bio="With over 50 years in the Survey and Construction industry, Nick founded 3D in 1989 and has been steering the ship ever since. Mostly retired from fieldwork but still learning new tricks — he recently qualified as a CAA drone pilot (proving you can teach an old dog new tricks!) — Nick now focuses on running the business. When he’s not keeping 3D on track, you’ll find him thrashing his classic motorcycles around a race track or off exploring in his campervan — mountain bike always in tow.">
               <img src="./images/Nick_Smith/Image_11.jpg" alt="Nick Smith">
               <h3>Nick Smith</h3>
               <p><strong></stron>Managing Director</strong></p>
@@ -111,6 +112,19 @@
             </div>
 
           </div>
+
+          <!-- Background overlay -->
+          <div id="overlay" class="overlay"></div>
+          
+          <!-- Bio Side Panel -->
+          <div id="bio-panel" class="bio-panel">
+            <span class="close-btn" onclick="closeBio()">&times;</span>
+            <div class="bio-content">
+              <img id="bio-image" class="bio-image" src="" alt="Profile Image">
+              <div class="bio-text" id="bio-details"></div>
+            </div>
+          </div>
+
         </div>
       </section>
       
@@ -229,10 +243,10 @@
     });
   </script>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <script>
+  <script>
     const caseSwiper = new Swiper('.case-studies-swiper', {
         slidesPerView: 1,
         spaceBetween: 10,
@@ -249,7 +263,44 @@
         }
         }
     });
-    </script>
+  </script>
+
+  <script>
+    const teamMembers = document.querySelectorAll('.team-member');
+    const bioPanel = document.getElementById('bio-panel');
+    const bioDetails = document.getElementById('bio-details');
+    const overlay = document.getElementById('overlay');
+    const bioImage = document.getElementById('bio-image');
+
+    teamMembers.forEach(member => {
+      member.addEventListener('click', () => {
+        const name = member.querySelector('h3').innerText;
+        const title = member.querySelector('p strong').innerText;
+        // const email = member.querySelectorAll('p')[1]?.innerText || '';
+        const email = member.querySelector('a')?.innerText || '';
+        const imgSrc = member.querySelector('img').src;
+        const description = member.getAttribute('data-bio') || '';
+
+        bioDetails.innerHTML = `
+          <h3>${name}</h3>
+          <p><strong>${title}</strong></p>
+          <p>${description}</p>
+          <p><a href="mailto:${email}">${email}</a></p>
+        `;
+        bioImage.src = imgSrc;
+
+        bioPanel.classList.add('active');
+        overlay.classList.add('active');
+      });
+    });
+
+    function closeBio() {
+      bioPanel.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    overlay.addEventListener('click', closeBio);
+  </script>
 
 </body>
 </html>
