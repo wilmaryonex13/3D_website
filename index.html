@@ -65,7 +65,7 @@
     </div>
   </section>
 
-  <section class="output-viewer">
+  <!-- <section class="output-viewer">
     <div class="container">
 
       <br>
@@ -76,6 +76,25 @@
       <div class="buttons">
         <button onclick="switchTo('drone')">DRONE</button>
         <button onclick="switchTo('laser')">LASER SCAN</button>
+      </div>
+      
+      <br>
+      <br>
+
+    </div>
+  </section> -->
+
+  <section class="output-viewer">
+    <div class="container">
+
+      <br>
+      <br>
+
+      <canvas id="sequence" width="980" height="551"></canvas>
+
+      <div class="buttons">
+        <button onclick="playSequence('laser-to-drone')">DRONE</button>
+        <button onclick="playSequence('drone-to-laser')">LASER SCAN</button>
       </div>
       
       <br>
@@ -724,6 +743,15 @@
     'laser->drone': 'videos/laser-to-drone.mp4',
   };
 
+
+
+
+
+
+
+
+
+
   // CODE WITHOUT DELAY
 
   // function switchTo(targetView) {
@@ -754,6 +782,14 @@
   //   // video.currentTime = 0;
   // };
   // }
+
+
+
+
+
+
+
+
 
   // CODE WITH DELAY
 
@@ -793,6 +829,14 @@
     // video.currentTime = 0;
   };
 
+
+
+
+
+
+
+
+
   // CODE WITH BACKGROUND IMAGE AND DEFUALT VIEWER CONSIDERATION
 
 //   function switchTo(targetView) {
@@ -828,56 +872,236 @@
 //   };
 // }
 
+//CODE WITHOUT USING POSTER
+// const video = document.getElementById('viewer');
+// let currentView = 'drone';
+
+// // Transition video mapping
+// const transitions = {
+//   'drone->laser': 'videos/drone-to-laser.mp4',
+//   'laser->drone': 'videos/laser-to-drone.mp4',
+// };
+
+// // Initial video that looks like a still frame (e.g., first frame of 'drone->laser')
+// window.onload = () => {
+//   video.src = transitions['drone->laser'];
+//   video.load();
+
+//   video.onloadeddata = () => {
+//     video.pause();         // Freeze on first frame
+//     video.currentTime = 0; // Ensure it's the first frame
+//   };
+// };
+
+// // Function to switch between views
+// function switchTo(targetView) {
+//   if (targetView === currentView) return;
+
+//   const key = `${currentView}->${targetView}`;
+//   const transitionVideo = transitions[key];
+
+//   if (!transitionVideo) {
+//     alert("Transition video not found.");
+//     return;
+//   }
+
+//   video.src = transitionVideo;
+//   video.load();
+
+//   video.onloadeddata = () => {
+//     video.play();
+//   };
+
+//   video.onended = () => {
+//     video.pause();
+//     video.currentTime = video.duration; // Freeze at last frame
+//   };
+
+//   currentView = targetView;
+// }
+
+
 </script>
 
+
+<!-- <script>
+  const video = document.getElementById('viewer');
+  let currentView = 'drone';
+
+  const transitions = {
+    'drone->laser': 'videos/drone-to-laser.mp4',
+    'laser->drone': 'videos/laser-to-drone.mp4',
+  };
+
+  // Initialize: show the first frame of a transition video
+  window.onload = () => {
+    video.src = transitions['drone->laser'];
+    video.load();
+    video.onloadeddata = () => {
+      video.pause();
+      video.currentTime = 0;
+    };
+  };
+
+  function switchTo(targetView) {
+    if (targetView === currentView) return;
+
+    const key = `${currentView}->${targetView}`;
+    const transitionVideo = transitions[key];
+
+    if (!transitionVideo) {
+      alert("Transition video not found.");
+      return;
+    }
+
+    // 1. Freeze the viewer (hold previous view) for a short moment
+    const previousSrc = video.src;
+    video.pause();
+
+    // 2. Delay applying the new source — allow browser to hold frame
+    setTimeout(() => {
+      video.src = transitionVideo;
+      video.load();
+
+      video.onloadeddata = () => {
+        video.play();
+      };
+
+      video.onended = () => {
+        video.pause();
+        video.currentTime = video.duration;
+      };
+
+      currentView = targetView;
+    }, 150); // ← Try 100–200ms here. Adjust if needed.
+  }
+</script> -->
+
+
+
+<!-- OPACITY CHANGE -->
 
 <!-- 
 <script>
   const video = document.getElementById('viewer');
-let currentView = 'drone';
+  let currentView = 'drone';
 
-const transitions = {
-  'drone->laser': 'videos/drone-to-laser.mp4',
-  'laser->drone': 'videos/laser-to-drone.mp4',
-};
-
-// Show first frame of the transition video to simulate a still view
-window.onload = () => {
-  video.src = transitions['drone->laser']; // or any transition video starting from 'drone'
-  video.load();
-  video.onloadeddata = () => {
-    video.pause();
-    video.currentTime = 0; // Freeze at first frame
+  const transitions = {
+    'drone->laser': 'videos/drone-to-laser.mp4',
+    'laser->drone': 'videos/laser-to-drone.mp4',
   };
-};
 
-function switchTo(targetView) {
-  if (targetView === currentView) return;
+  window.onload = () => {
+    video.src = transitions['drone->laser'];
+    video.load();
+    video.onloadeddata = () => {
+      video.pause();
+      video.currentTime = 0;
+    };
+  };
 
-  const key = `${currentView}->${targetView}`;
-  const transitionVideo = transitions[key];
+  function switchTo(targetView) {
+    if (targetView === currentView) return;
 
-  if (!transitionVideo) {
-    alert("Transition video not found.");
-    return;
+    const key = `${currentView}->${targetView}`;
+    const transitionVideo = transitions[key];
+
+    if (!transitionVideo) {
+      alert("Transition video not found.");
+      return;
+    }
+
+    // Hold the current frame for a bit
+    video.pause();
+    video.style.opacity = 0;
+
+    setTimeout(() => {
+      video.src = transitionVideo;
+      video.load();
+
+      video.onloadeddata = () => {
+        video.play();
+        video.style.opacity = 1;
+      };
+
+      video.onended = () => {
+        video.pause();
+        video.currentTime = video.duration;
+      };
+
+      currentView = targetView;
+    }, 200); // Delay of 150ms to prevent blip
+  }
+</script> -->
+
+
+
+<!-- FRAME BY FRAME -->
+<script>
+  const canvas = document.getElementById('sequence');
+  const ctx = canvas.getContext('2d');
+
+  const config = {
+    fps: 24,
+    frameCount: 90, // Adjust based on how many frames you have
+    frameWidth: 980,
+    frameHeight: 551,
+    extension: '.webp',
+    folder: 'frames',
+  };
+
+  let images = [];
+  let currentAnimation = '';
+  let isPlaying = false;
+
+  function preloadImages(folderName, callback) {
+    const sequence = [];
+    let loaded = 0;
+    for (let i = 1; i <= config.frameCount; i++) {
+      const num = String(i).padStart(3, '0');
+      const img = new Image();
+      img.src = `${config.folder}/${folderName}/frame${num}${config.extension}`;
+      img.onload = () => {
+        loaded++;
+        if (loaded === config.frameCount) callback(sequence);
+      };
+      sequence.push(img);
+    }
   }
 
-  video.src = transitionVideo;
-  video.load();
+  function drawFrame(image) {
+    ctx.clearRect(0, 0, config.frameWidth, config.frameHeight);
+    ctx.drawImage(image, 0, 0, config.frameWidth, config.frameHeight);
+  }
 
-  video.onloadeddata = () => {
-    video.play();
+  function playSequence(folderName) {
+    if (isPlaying || folderName === currentAnimation) return;
+    isPlaying = true;
+    currentAnimation = folderName;
+
+    preloadImages(folderName, (sequence) => {
+      images = sequence;
+      let index = 0;
+
+      const interval = setInterval(() => {
+        drawFrame(images[index]);
+        index++;
+        if (index >= images.length) {
+          clearInterval(interval);
+          isPlaying = false;
+        }
+      }, 1000 / config.fps);
+    });
+  }
+
+  // Show the first frame on load (optional)
+  window.onload = () => {
+    preloadImages('drone-to-laser', (sequence) => {
+      drawFrame(sequence[0]);
+    });
   };
+</script>
 
-  video.onended = () => {
-    video.pause();
-    video.currentTime = video.duration; // Freeze at last frame
-  };
-
-  currentView = targetView;
-}
-
-</script> -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
