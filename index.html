@@ -653,13 +653,16 @@
 
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
+    hamburger.classList.toggle('open');
   });
 
   //Close the menu when any link is clicked
   const navItems = document.querySelectorAll('#mobile-nav a');
+
   navItems.forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
+      hamburger.classList.remove('open');
     });
   });
 </script>
@@ -736,6 +739,7 @@
     }
   });
 </script>
+
 
 <!-- Output Viewer -->
 
@@ -863,7 +867,7 @@
 //     return;
 //   }
 
-//   // 🔁 Set background image to current view's poster
+//   // Set background image to current view's poster
 //   video.style.backgroundImage = `url(${posters[currentView]})`;
 //   video.poster = posters[currentView]; // Optional fallback
 //   video.src = transitionVideo;
@@ -881,7 +885,7 @@
 //   video.onended = () => {
 //     video.pause();
 //     video.poster = posters[targetView];
-//     video.style.backgroundImage = `url(${posters[targetView]})`; // 🔁 Set background for new frozen state
+//     video.style.backgroundImage = `url(${posters[targetView]})`; // Set background for new frozen state
 //   };
 // }
 
