@@ -21,20 +21,22 @@
     /* padding-left: 1vw; */
   }
   
-  .navbar {
-    /* position: fixed;
-    width: 100%;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 100; */
-
+  /* .navbar {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    background: transparent; /* Let video show through */
-    z-index: 2; /* stays above video */
-    box-shadow: none; /* optional */
+    background: transparent; 
+    z-index: 2; 
+    box-shadow: none; 
+  } */
+
+  .navbar {
+    width: 100%;
+    background:#02580a;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 100;
   }
 
   /* @media (max-width: 800px) and (orientaion: landscape){
@@ -62,8 +64,8 @@
   .nav-links {
     display: flex;
     gap: 1rem;
-    flex: 1;
-    justify-content: flex-end;
+    /* flex: 1;
+    justify-content: flex-end; */
 
   }
   
@@ -76,12 +78,15 @@
     font-weight: bold;
     background: transparent;
     transition: background-color 0.3s, color 0.3s;
-    display: block;
+    /* display: block; */
   }
   
   .nav-links a:hover {
     background-color: rgb(2, 56, 10);
     color: white;
+    border-radius: 4px;
+    /* transition: background 0.3s; */
+    transition: all 0.3s ease;
   }
   
   .hero {
@@ -242,10 +247,6 @@
   @media (max-width: 768px) {
     .hero h1 {
       font-size: 2rem;
-    }
-  
-    .nav-links {
-      display: block; /* For now. You can make a hamburger menu later */
     }
 
     .profile p {
@@ -617,7 +618,7 @@
   
   /* Mobile Styles */
   @media (max-width: 1300px) {
-  .hamburger {
+  /* .hamburger {
     display: flex;
   }
 
@@ -628,10 +629,10 @@
     right: 0;
     background-color: white;
     flex-direction: column;
-    align-items: flex-start; /* ⬅ aligns text to the left */
+    align-items: flex-start;
     gap: 1rem;
     padding: 1rem 2rem;
-    display: block;
+    display: flex;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-10px);
@@ -646,13 +647,37 @@
   }
 
   .nav-links a {
-    border: none !important;  /* ⬅ removes green border */
+    border: none !important; 
     color: #02580a;
     font-weight: 600;
     font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    display: block;
-  } 
+    padding: 0.5rem 0;
+  } */
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgb(169, 53, 53);
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid #eee;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links.active a {
+    color: #02580a !important;
+  }
   }
   
   /* Case Studies */

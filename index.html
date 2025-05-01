@@ -654,6 +654,14 @@
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
   });
+
+  //Close the menu when any link is clicked
+  const navItems = document.querySelectorAll('#mobile-nav a');
+  navItems.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
 </script>
 
 <script>
