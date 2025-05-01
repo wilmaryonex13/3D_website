@@ -79,10 +79,16 @@ body {
     color:#02580a
 } */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .nav-links.active a {
       color: #02580a !important;
     }
+} */
+
+@media (max-width: 1300px) {
+  .nav-links.active a {
+    color: #02580a !important;
+  }
 }
 
 main {
@@ -407,7 +413,7 @@ h1 { color: #02580a;
   text-decoration: underline;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .footer-grid,
   .footer-bottom,
   .contact-container {
