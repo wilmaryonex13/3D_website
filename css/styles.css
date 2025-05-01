@@ -36,6 +36,12 @@
     z-index: 2; /* stays above video */
     box-shadow: none; /* optional */
   }
+
+  /* @media (max-width: 800px) and (orientaion: landscape){
+    .navbar {
+      top: 100px;
+    }
+  } */
   
   .navbar .container {
     display: flex;
@@ -43,13 +49,15 @@
     align-items: center;
     padding: 1.5rem 4rem;
   }
-/*   
+
+  /*   
   .nav-links a {
     margin-left: 20px;
     text-decoration: none;
     color: #333;
     font-weight: bold;
-  } */
+  }
+  */
 
   .nav-links {
     display: flex;
@@ -96,6 +104,16 @@
     position: relative;
     padding-top: 10vw;
     z-index: 1;
+  }
+
+  @media (max-width: 800px) and (orientation: landscape){
+    .hero-content {
+      padding-top: 12vw;
+    }
+
+    .hero {
+      height: 55vw;
+    }
   }
   
   .hero h1 {
@@ -826,6 +844,19 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
   }
+
+  @media (max-width: 800px) and (orientation: landscape){
+
+    .footer-grid {
+      gap: 5rem;
+    }
+
+    .footer-bottom{
+      padding: 1rem 1rem !important;
+      /* background: red !important; */
+    }
+    
+  }
   
   .footer-logo {
     font-size: 2rem;
@@ -1075,6 +1106,23 @@
   }
 }
 
+@media (max-width: 800px) and (orientation: landscape){
+
+  .contact-container {
+    justify-content: center;
+    flex-direction: column; /* optional if you want stacking */
+    align-items: center;
+    gap: 1rem; /* optional: spacing between items */
+  }
+
+  .contact-form {
+    width: 80vw;
+  }
+
+  .contact.info{
+    text-align: center;
+  }
+}
 
 
 /* Sectors Section */
