@@ -65,12 +65,16 @@
   }
   */
 
+  /* .logo a{
+    padding-bottom: 2rem;
+  } */
+
   .nav-links {
     display: flex;
     gap: 1rem;
     flex: 1;
     justify-content: flex-end;
-
+    /* padding-top: 3rem; */
   }
   
   .nav-links a {
@@ -90,9 +94,9 @@
     color: white;
   }
   
-  /* Added May 1, 2025 */
+  /* Nav-links smoother transition */
   
-  .nav-links {
+  /* .nav-links {
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform: translateY(-20px);
   }
@@ -100,9 +104,7 @@
   .nav-links.active {
     transform: translateY(0);
     background-color: rgba(255, 255, 255, 0.95);
-  }
-
-
+  } */
 
   .hero {
     position: relative;
@@ -184,7 +186,7 @@
   }
 
   a.btn:hover {
-    background-color:#02580a;
+    background-color:white;
   }
   
   .cta {
@@ -197,8 +199,8 @@
     /* background: #cfd3cf; */
     background-image: url("https://wilmaryonex13.github.io/3D_website/images/white_concrete_wall.png");
   }
-  
-  /* .services-grid {
+
+  /*.services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
@@ -679,7 +681,7 @@
   }
 
   .nav-links a {
-    border: none !important;  /* ⬅ removes green border */
+    border: none !important;  
     color: #02580a;
     font-weight: 600;
     font-size: 1.1rem;
@@ -1475,7 +1477,6 @@
 }
 
 /* Privacy Policy */
-
 .privacy-agreement {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -1498,8 +1499,6 @@
   text-decoration: none;
   color: white;
 }
-
-
 
 /* .card-link {
   text-decoration: none;
@@ -1683,6 +1682,176 @@ button:hover {
   }
 }
 
+
+/* Output Viewer Buttons*/
+
+@media (max-width: 768px) {
+  .output-viewer .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    justify-items: stretch;
+  }
+
+  .output-viewer .buttons button {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+  }
+}
+
+/* @media (max-width: 768px) {
+  .output-viewer .buttons {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+  }
+
+  .output-viewer .buttons button {
+    flex: 0 0 auto;
+    min-width: 120px;
+  }
+} */
+
+
+/* 3D Effect of output Viewer buttons */
+
+/* .output-viewer .buttons button {
+  background-color: #fff;
+  border: 2px solid #02580a;
+  color: #02580a;
+  padding: 0.75rem 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.output-viewer .buttons button:hover {
+  background-color: #e9ffe9;
+}
+
+.output-viewer .buttons button.active-button {
+  transform: translateY(2px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #caffca;
+} */
+
+
+
+
+
+
+
+
+
+
+/* .output-viewer .buttons button {
+  background-color: #fff;
+  border: 2px solid #02580a;
+  color: #02580a;
+  padding: 0.75rem 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.15s ease;
+  transform: translateY(0);
+  cursor: pointer;
+  outline: none;
+}
+
+
+.output-viewer .buttons button:active {
+  transform: translateY(3px);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+.output-viewer .buttons button.active-button {
+  animation: rebound 0.2s ease-out;
+  background-color: #caffca;
+  transform: translateY(2px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+@keyframes rebound {
+  0%   { transform: translateY(3px); }
+  50%  { transform: translateY(1px); }
+  100% { transform: translateY(2px); }
+} */
+
+
+
+
+
+
+
+
+
+.output-viewer .buttons button {
+  background-color: #fff;
+  border: 2px solid #02580a;
+  color: #02580a;
+  padding: 0.75rem 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 6px 0 #02580a; 
+  transition: all 0.1s ease-in-out;
+  transform: translateY(0);
+  cursor: pointer;
+  outline: none;
+}
+
+.output-viewer .buttons button.active-button {
+  transform: translateY(6px); 
+  box-shadow: 0 0 0 #02580a;  
+  background-color: #caffca; 
+}
+
+
+
+
+
+
+
+
+
+
+/* .output-viewer .buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.output-viewer .buttons button {
+  background: #ffffff;
+  color: #02580a;
+  border: none;
+  padding: 0.9rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  transform: translateY(0);
+  cursor: pointer;
+}
+
+.output-viewer .buttons button:hover {
+  background-color: #f5fff5;
+}
+
+.output-viewer .buttons button:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.output-viewer .buttons button.active-button {
+  background-color: #e5fbe5;
+  transform: translateY(3px);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3);
+} */
 
 
 

@@ -101,7 +101,7 @@
               </div>
             </a>
           </div>
-  
+
           <div class="swiper-slide">
             <a href="case_studies.html">
               <div class="case-study-card">
@@ -113,7 +113,7 @@
               </div>
             </a>
           </div>
-  
+
           <div class="swiper-slide">
             <a href="case_studies.html">
               <div class="case-study-card">
@@ -256,6 +256,17 @@
 
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+
+    //Close the menu when any link is clicked
+    const navItems = document.querySelectorAll('#mobile-nav a');
+
+    navItems.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('open');
+      });
     });
   </script>
 

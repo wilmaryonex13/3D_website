@@ -18,7 +18,9 @@
   <link rel="preload" as="image" href="posters/laser-end.jpg">
   <link rel="preload" as="video" href="videos/drone-to-laser.mp4" type="video/mp4">
   <link rel="preload" as="video" href="videos/laser-to-drone.mp4" type="video/mp4"> -->
-
+  <link rel="preload" as="image" href="posters/bim-end.jpg">
+  <link rel="preload" as="image" href="posters/topo-end.jpg">
+  <link rel="preload" as="image" href="posters/utilities-end.jpg">
 </head>
 
 <body>
@@ -53,7 +55,7 @@
   </header>
 
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
+    <video class="hero-video" autoplay muted loop playsinline loading="lazy" poster="images/hero-fallback.jpg">
       <source src="./videos/Oxshott.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -76,6 +78,9 @@
       <div class="buttons">
         <button onclick="switchTo('drone')">DRONE</button>
         <button onclick="switchTo('laser')">LASER SCAN</button>
+        <button onclick="switchTo('bim')">BIM</button>
+        <button onclick="switchTo('topo')">TOPOGRAPHICAL</button>
+        <button onclick="switchTo('utilities')">UTILITIES</button>
       </div>
       
       <br>
@@ -751,23 +756,36 @@
 
   // Preload and set last frame as poster
   const posters = {
-    drone: 'posters/drone-end.jpg',
-    laser: 'posters/laser-end.jpg',
-  };
-
-  const transitions = {
-    'drone->laser': 'videos/drone-to-laser.mp4',
-    'laser->drone': 'videos/laser-to-drone.mp4',
-  };
+  drone: 'posters/drone-end.jpg',
+  laser: 'posters/laser-end.jpg',
+  bim: 'posters/bim-end.jpg',
+  topo: 'posters/topo-end.jpg',
+  utilities: 'posters/utilities-end.jpg',
+};
 
 
-
-
-
-
-
-
-
+const transitions = {
+  'drone->laser': 'videos/drone-to-laser.mp4',
+  'laser->drone': 'videos/laser-to-drone.mp4',
+  'drone->bim': 'videos/drone-to-bim.mp4',
+  'bim->drone': 'videos/bim-to-drone.mp4',
+  'laser->bim': 'videos/laser-to-bim.mp4',
+  'bim->laser': 'videos/bim-to-laser.mp4',
+  'drone->topo': 'videos/drone-to-topo.mp4',
+  'topo->drone': 'videos/topo-to-drone.mp4',
+  'bim->topo': 'videos/bim-to-topo.mp4',
+  'topo->bim': 'videos/topo-to-bim.mp4',
+  'laser->topo': 'videos/laser-to-topo.mp4',
+  'topo->laser': 'videos/topo-to-laser.mp4',
+  'laser->utilities': 'videos/laser-to-utilities.mp4',
+  'utilities->laser': 'videos/utilities-to-laser.mp4',
+  'drone->utilities': 'videos/drone-to-utilities.mp4',
+  'utilities->drone': 'videos/utilities-to-drone.mp4',
+  'bim->utilities': 'videos/bim-to-utilities.mp4',
+  'utilities->bim': 'videos/utilities-to-bim.mp4',
+  'topo->utilities': 'videos/topo-to-utilities.mp4',
+  'utilities->topo': 'videos/utilities-to-topo.mp4',
+};
 
   // CODE WITHOUT DELAY
 
@@ -810,51 +828,115 @@
 
   // CODE WITH DELAY
 
-  function switchTo(targetView) {
-  if (targetView === currentView) return;
+//   function switchTo(targetView) {
+//   if (targetView === currentView) return;
 
-  const key = `${currentView}->${targetView}`;
-  const transitionVideo = transitions[key];
+//   const key = `${currentView}->${targetView}`;
+//   const transitionVideo = transitions[key];
 
-  if (!transitionVideo) {
-    alert("Transition video not found.");
-    return;
+//   if (!transitionVideo) {
+//     alert("Transition video not found.");
+//     return;
+//   }
+
+//   video.poster = posters[currentView]; // keep current poster until ready
+
+//   video.src = transitionVideo;
+//   video.load();
+//   video.play();
+//   currentView = targetView;
+
+//   video.oncanplaythrough = () => {
+//     setTimeout(() => {
+//       video.poster = ""; // Now remove poster cleanly after delay
+//     }, 100); // delay 100ms or tweak to 200ms if needed
+//   };
+
+//   video.onended = () => {
+//     video.pause();
+//     video.poster = posters[targetView]; // Set poster after video ends
+//   };
+// }
+
+//   // Initialize to DRONE view
+//   window.onload = () => {
+//     video.poster = posters['drone']; // Show drone still frame
+//     // video.currentTime = 0;
+//   };
+
+
+  // CODE WITH IMAGE FALLBACK
+
+  function switchTo(view) {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const effectiveType = connection?.effectiveType || '';
+    const saveData = connection?.saveData || false;
+
+    // Treat 2g, 3g, or Save Data ON as slow
+    const isSlow = ['2g', '3g'].includes(effectiveType) || saveData;
+
+    const key = `${currentView}->${view}`;
+    if (view === currentView) return;
+
+    console.log('Connection type:', effectiveType, '| Save Data:', saveData, '| Slow?', isSlow);
+
+    // ✅ Fallback: ONLY show the poster image
+    if (isSlow) {
+      video.pause();
+      video.removeAttribute('src'); // stops any ongoing video
+      video.load();
+      video.poster = posters[view]; // Show still image
+      currentView = view;
+      return;
+    }
+
+    // ✅ Normal mode: play transition video
+    const transitionVideo = transitions[key];
+    if (!transitionVideo) {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      video.poster = posters[view]; // fallback if no transition exists
+      currentView = view;
+      return;
+    }
+
+    video.poster = posters[currentView];
+    video.src = transitionVideo;
+    video.load();
+    video.play();
+    currentView = view;
+
+    // Highlight the active button visually
+    document.querySelectorAll('.output-viewer .buttons button').forEach(btn => {
+      btn.classList.remove('active-button');
+    });
+    const clickedBtn = document.querySelector(`.output-viewer .buttons button[onclick*="${view}"]`);
+    if (clickedBtn) {
+      clickedBtn.classList.add('active-button');
+    }
+
+    video.oncanplaythrough = () => {
+      setTimeout(() => {
+        video.poster = '';
+      }, 200);
+    };
+
+    video.onended = () => {
+      video.pause();
+      video.poster = posters[view];
+    };
   }
 
-  video.poster = posters[currentView]; // keep current poster until ready
 
-  video.src = transitionVideo;
-  video.load();
-  video.play();
-  currentView = targetView;
-
-  video.oncanplaythrough = () => {
-    setTimeout(() => {
-      video.poster = ""; // Now remove poster cleanly after delay
-    }, 100); // delay 100ms or tweak to 200ms if needed
-  };
-
-  video.onended = () => {
-    video.pause();
-    video.poster = posters[targetView]; // Set poster after video ends
-  };
-}
-
-  // Initialize to DRONE view
-  window.onload = () => {
+    // Initialize to DRONE view
+    window.onload = () => {
     video.poster = posters['drone']; // Show drone still frame
     // video.currentTime = 0;
   };
 
 
-
-
-
-
-
-
-
-  // CODE WITH BACKGROUND IMAGE AND DEFUALT VIEWER CONSIDERATION
+// CODE WITH BACKGROUND IMAGE AND DEFUALT VIEWER CONSIDERATION
 
 //   function switchTo(targetView) {
 //   if (targetView === currentView) return;
