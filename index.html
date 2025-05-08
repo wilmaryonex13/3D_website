@@ -119,32 +119,14 @@
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="service_heading">
-                  <h3>Topographical Surveys</h3>
+                  <h3>Land Surveys</h3>
                 </div>
                 <div class="img-holder img-1"></div>
               </div>
               <div class="flip-card-back">
                 <h3>What We Do</h3>
-                <p>We provide detailed topographical surveys for a range of development and engineering applications.</p>
-                <a href="services.html" class="btn">Read More</a>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a href="services.html">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="service_heading">
-                  <h3>Boundary Surveys</h3>
-                </div>
-                <div class="img-holder img-1"></div>
-              </div>
-              <div class="flip-card-back">
-                <h3>What We Do</h3>
-                <p>We provide detailed topographical surveys for a range of development and engineering applications.</p>
-                <a href="services.html" class="btn">Read More</a>
+                <p>We deliver accurate land and engineering surveys using advanced tools, providing clear, reliable data for developments of any size.</p>
+                <a href="land-surveys.html" class="btn">Read More</a>
               </div>
             </div>
           </div>
@@ -161,8 +143,8 @@
               </div>
               <div class="flip-card-back">
                 <h3>What We Do</h3>
-                <p>We provide detailed topographical surveys for a range of development and engineering applications.</p>
-                <a href="services.html" class="btn">Read More</a>
+                <p>We capture precise internal and external building details to create floor plans, elevations, and sections for planning and design.</p>
+                <a href="measured-building-surveys.html" class="btn">Read More</a>
               </div>
             </div>
           </div>
@@ -179,8 +161,8 @@
               </div>
               <div class="flip-card-back">
                 <h3>What We Do</h3>
-                <p>We provide detailed topographical surveys for a range of development and engineering applications.</p>
-                <a href="services.html" class="btn">Read More</a>
+                <p>Using 3D laser scanning, we quickly collect high-detail data for 2D drawings, CAD models, or BIM — even in complex spaces.</p>
+                <a href="laser-scanning.html" class="btn">Read More</a>
               </div>
             </div>
           </div>
@@ -197,8 +179,8 @@
               </div>
               <div class="flip-card-back">
                 <h3>What We Do</h3>
-                <p>We provide detailed topographical surveys for a range of development and engineering applications.</p>
-                <a href="services.html" class="btn">Read More</a>
+                <p>We detect and map underground utilities using GPR and EML tools, producing PAS 128-compliant surveys to reduce construction risk.</p>
+                <a href="underground-surveys.html" class="btn">Read More</a>
               </div>
             </div>
           </div>
@@ -215,8 +197,8 @@
               </div>
               <div class="flip-card-back">
                 <h3>What We Do</h3>
-                <p>We provide detailed topographical surveys for a range of development and engineering applications.</p>
-                <a href="services.html" class="btn">Read More</a>
+                <p>We provide precise setting-out and engineering control for builds of all scales, backed by fast, CAD-driven planning and execution.</p>
+                <a href="engineering.html" class="btn">Read More</a>
               </div>
             </div>
           </div>
@@ -233,8 +215,8 @@
               </div>
               <div class="flip-card-back">
                 <h3>What We Do</h3>
-                <p>We provide detailed topographical surveys for a range of development and engineering applications.</p>
-                <a href="services.html" class="btn">Read More</a>
+                <p>We monitor structures, land movement, vibration, and noise with flexible programs that deliver fast, accurate results and reporting.</p>
+                <a href="monitoring.html" class="btn">Read More</a>
               </div>
             </div>
           </div>
@@ -251,8 +233,8 @@
               </div>
               <div class="flip-card-back">
                 <h3>What We Do</h3>
-                <p>We provide detailed topographical surveys for a range of development and engineering applications.</p>
-                <a href="services.html" class="btn">Read More</a>
+                <p>We use drone photogrammetry and 360 imagery to support mapping, modelling, inspections, and documentation — enhancing survey data.</p>
+                <a href="photogrammetry.html" class="btn">Read More</a>
               </div>
             </div>
           </div>
@@ -868,65 +850,60 @@ const transitions = {
   // CODE WITH IMAGE FALLBACK
 
   function switchTo(view) {
-    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    const effectiveType = connection?.effectiveType || '';
-    const saveData = connection?.saveData || false;
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const effectiveType = connection?.effectiveType || '';
+  const saveData = connection?.saveData || false;
+  const isSlow = ['2g', '3g'].includes(effectiveType) || saveData;
 
-    // Treat 2g, 3g, or Save Data ON as slow
-    const isSlow = ['2g', '3g'].includes(effectiveType) || saveData;
+  const key = `${currentView}->${view}`;
+  if (view === currentView) return;
 
-    const key = `${currentView}->${view}`;
-    if (view === currentView) return;
-
-    console.log('Connection type:', effectiveType, '| Save Data:', saveData, '| Slow?', isSlow);
-
-    // ✅ Fallback: ONLY show the poster image
-    if (isSlow) {
-      video.pause();
-      video.removeAttribute('src'); // stops any ongoing video
-      video.load();
-      video.poster = posters[view]; // Show still image
-      currentView = view;
-      return;
-    }
-
-    // ✅ Normal mode: play transition video
-    const transitionVideo = transitions[key];
-    if (!transitionVideo) {
-      video.pause();
-      video.removeAttribute('src');
-      video.load();
-      video.poster = posters[view]; // fallback if no transition exists
-      currentView = view;
-      return;
-    }
-
-    video.poster = posters[currentView];
-    video.src = transitionVideo;
-    video.load();
-    video.play();
-    currentView = view;
-
-    // Highlight the active button visually
-    document.querySelectorAll('.output-viewer .buttons button').forEach(btn => {
-      btn.classList.remove('active-button');
-    });
-    const clickedBtn = document.querySelector(`.output-viewer .buttons button[onclick*="${view}"]`);
-    if (clickedBtn) {
-      clickedBtn.classList.add('active-button');
-    }
-
-    video.oncanplaythrough = () => {
-      setTimeout(() => {
-        video.poster = '';
-      }, 200);
-    };
-
-    video.onended = () => {
-      video.pause();
-      video.poster = posters[view];
-    };
+  // Always update active button state
+  document.querySelectorAll('.output-viewer .buttons button').forEach(btn => {
+    btn.classList.remove('active-button');
+  });
+  const clickedBtn = document.querySelector(`.output-viewer .buttons button[onclick*="${view}"]`);
+  if (clickedBtn) {
+    clickedBtn.classList.add('active-button');
   }
+
+  if (isSlow) {
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    video.poster = posters[view];
+    currentView = view;
+    return;
+  }
+
+  const transitionVideo = transitions[key];
+  if (!transitionVideo) {
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    video.poster = posters[view];
+    currentView = view;
+    return;
+  }
+
+  video.poster = posters[currentView];
+  video.src = transitionVideo;
+  video.load();
+  video.play();
+  currentView = view;
+
+  video.oncanplaythrough = () => {
+    setTimeout(() => {
+      video.poster = '';
+    }, 200);
+  };
+
+  video.onended = () => {
+    video.pause();
+    video.poster = posters[view];
+  };
+}
+
 
 
     // Initialize to DRONE view

@@ -160,19 +160,54 @@ h1 { color: #02580a;
     flex-direction: row-reverse;
 }
 
-.main-paragraph {
+/* .main-paragraph {
     flex: 1 1 50%;
     max-width: 600px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    text-align: justify;
+}
+
+.main-paragraph-reverse {
+  flex: 1 1 50%;
+  max-width: 600px;
+  padding-left: 5rem;
+  padding-right: 2rem;
+  text-align: justify;
+} */
+
+.main-paragraph {
+  flex: 1 1 45%;
+  max-width: 600px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  /* text-align: justify; */
+}
+
+.indented-list {
+  margin-left: 4rem; /* or try 3rem, 4rem, etc. */
+  text-align: left;
 }
 
 .main-image-holder {
-    flex: 1 1 45%;
-    min-height: 300px;
-    background-size: cover;
-    background-position: center;
-    background-color: #841515;
-    border-radius: 8px;
+  flex: 1 1 45%;
+  min-height: 300px;
+  background-color: #02580a;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.main-image-holder img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 
 /* Demo placeholders, replace with real images */
 .image-1 {
@@ -191,7 +226,7 @@ h1 { color: #02580a;
       text-align: center;
     }
   
-    .main-paragraph, .main-image-holder {
+    .main-paragraph,.main-paragraph-reverse, .main-image-holder {
       flex: 1 1 100%;
       max-width: 100%;
     }
@@ -684,3 +719,4 @@ main.thank-you-page {
   .thank-you-page a.button:hover {
     background-color: #14821f;
   }
+

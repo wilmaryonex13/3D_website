@@ -239,7 +239,7 @@
   }
 
   a.btn:hover {
-    background-color:#02580a;
+    background-color:#009900;
     color: white;
   }
 
@@ -1404,9 +1404,6 @@
   }
 }
 
-  
-
-
 
 
 
@@ -1459,7 +1456,12 @@
   }
 } */
 
-/* Case Study Card Link */
+
+
+
+
+
+/* CASE STUDY CARD LINK */
 
 .case-studies-swiper a {
   display: block;
@@ -1473,8 +1475,6 @@
   height: 100%;
 }
 
-
-
 .logo-combo {
   display: flex;
   align-items: center;
@@ -1484,7 +1484,8 @@
 
 
 
-/* Output Viewer */
+
+/* OUTPUT VIEWER */
 
 .output-viewer{
   background-color: #3c3c3c;
@@ -1584,7 +1585,7 @@ button:hover {
 
 /* canvas {
   width: 100vw;
-  height: auto;
+  height: auto; 
   max-height: 80vh;
   display: block;
   background: #000;
