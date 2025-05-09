@@ -148,7 +148,7 @@ h1 { color: #02580a;
     max-height: 500px;
     object-fit: cover;
     border-radius: 8px;
-    background-color: red;
+    background-color:#14821f;
   }
 
   @media (max-width: 768px) {

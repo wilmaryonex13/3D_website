@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Case Studies - Project 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/case_studies.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="icon" href="/images/favicon.png" type="image/png" /> 
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="/index.html">
+            <img src="/images/SigLogo_white.png" alt="3D Services Logo" />
+          </a>
+          <a href="/index.html">
+            <span class="brand-name">3D Services</span>
+          </a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav-links" id="mobile-nav">
+        <a href="/index.html#about">About</a>
+        <a href="/index.html#services">Services</a>
+        <a href="/index.html#sectors">Sectors</a>
+        <a href="/index.html#case_studies">Case Studies</a>
+        <a href="/team.html">Team</a>
+        <a href="/index.html#contact">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="container">
+        <br>
+        <br>
+        <h1>High-Precision Laser Scanning in Upper Woolhampton</h1>
+
+        <section class="case-study-content">
+            <p>Our team was commissioned to conduct a detailed laser scanning survey on a historic church situated in the Upper Woolhampton region. The client required accurate architectural documentation, including an internal floor plan, a tiling layout, and a sectional view of the front part of the church. The survey was intended to support restoration planning and ensure that all design decisions would be based on precise, up-to-date spatial data.</p>
+            <img src="/images/file_name.jpg" alt="Case Study Image 1" />
+
+            <p>To capture the intricate interior geometry, we deployed the Trimble X7 terrestrial laser scanner. This instrument was selected for its speed, precision, and real-time registration capabilities—crucial in a heritage setting where minimizing disruption is key. The entire survey was referenced to the Ordnance Survey National Grid using GPS control points, ensuring the resulting datasets aligned with national mapping standards for further planning or integration with other spatial datasets.</p>
+            <img src="/images/file_name.jpg" alt="Case Study Image 2" />
+
+            <p>The scanning process produced a comprehensive point cloud with millimetre-level accuracy. In addition to traditional 2D outputs, such as the floor plan and section, we delivered a tiling plan capturing the complex layout of the internal floor tiles—critical for restoration and documentation purposes. The raw scan data was processed using Trimble RealWorks, and final deliverables were exported in CAD-compatible formats to integrate seamlessly into the client’s architectural workflow.</p>
+            <img src="/images/file_name.jpg" alt="Case Study Image 3" />
+
+            <p>To enhance the deliverables, we created a 360-degree virtual tour of the scanned area. This immersive walkthrough allowed the client and their team to revisit the space remotely at any time, reducing the need for return site visits and streamlining coordination with contractors and heritage consultants. The tour proved especially valuable for visualizing fine architectural details and spatial relationships without requiring physical access to the site.</p>
+            <img src="/images/file_name.jpg" alt="Case Study Image 4" />
+
+            <h2>Project Outcome</h2>
+            <p>The survey provided the client with a precise, georeferenced digital record of the church’s interior—supporting both immediate design requirements and long-term preservation goals. Our team’s combination of high-end technology, accurate geospatial referencing, and detailed deliverables ensured that every aspect of the space was captured faithfully and ready for restoration use.</p>
+        </section>
+    </div>
+  </main>
+
+
+  <!-- OTHER CASE STUDIES -->
+  <section class="case-studies-section" id="case_studies">
+    <div class="container">
+      <br>
+      <h2>Case Studies</h2>
+  
+      <div class="swiper case-studies-swiper">
+        <div class="swiper-wrapper" id="case-cards-container">
+
+          <script>
+            fetch('/case_studies.json')
+              .then(response => response.json())
+              .then(data => {
+                const container = document.getElementById('case-cards-container');
+                const currentPage = window.location.pathname.split("/").pop();
+          
+                data.forEach(cs => {
+                  // Skip current page from showing in the "Other Case Studies" slider
+                  if (cs.filename === currentPage) return;
+          
+                  const slide = document.createElement('div');
+                  slide.className = 'swiper-slide';
+                  slide.innerHTML = `
+                    <a href="${cs.filename}">
+                      <div class="case-study-card">
+                        <img src="${cs.thumbnail}" alt="${cs.title}" />
+                        <div class="case-info">
+                          <h3>${cs.title}</h3>
+                          <p>${cs.description || ''}</p>
+                        </div>
+                      </div>
+                    </a>
+                  `;
+                  container.appendChild(slide);
+                });
+          
+                new Swiper('.case-studies-swiper', {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+                  pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                  },
+                  breakpoints: {
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 }
+                  }
+                });
+              });
+          </script>
+          
+        </div>
+        
+        <br>
+        <br>
+        <div class="swiper-pagination"></div>
+      </div>
+        <br>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-container">
+      <div class="contact-info">
+        <h2>Get in touch.</h2>
+        <div>
+          <div class="contact-detail">
+            <i class="fas fa-phone-alt"></i> 01428 684144
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:enquiries@3dservices.co.uk">enquiries@3dservices.co.uk</a>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-map-marker-alt"></i>
+            3D Services (South East) Ltd,<br> Unit 5, Coopers Place,<br>Combe Lane,Wormley,<br> Surrey GU8 5SZ
+          </div>
+        </div>
+      </div>
+  
+      <div class="contact-form-wrapper">
+        <form class="contact-form" action="https://formsubmit.co/wilmar@3dservices.co.uk" method="POST">
+          <h3>Send us a message.</h3>
+  
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="company" placeholder="Company (optional)">
+          </div>
+
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone" placeholder="Phone">
+          </div>
+
+          <div class="form-row">
+            <textarea name="message" placeholder="Message (optional)" rows="10"></textarea>
+          </div>
+          
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://wilmaryonex13.github.io/3D_website/thankyou.html">
+
+          <div class="privacy-agreement">
+            <small>
+              By submitting this form, you agree to our
+              <a href="privacy.html" target="_blank">Privacy Policy</a>.
+            </small>
+          </div>
+
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+  
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <a class="footer-logo-href" href="/index.html">
+            <div class="footer-logo-section">
+                <div class="logo-combo">
+                    <img src="/images/SigLogo_white.png">
+                    <div>
+                        <h2 class="footer-logo"><span class="highlight">3D Services</span> </h2>
+                    </div>
+                </div>
+                <p>Surveyors and Construction Engineers</p>
+            </div>
+        </a>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><a href="mailto:contact@3dservices.co.uk">enquiries@3dservices.co.uk</a></p>
+          <p>01428 684144</p>
+        </div>
+
+        <div class="footer-office">
+          <h4>Registered Office</h4>
+          <p>3D Services (South East) Ltd,<br> Unit 5, Coopers Place,<br>Combe Lane,Wormley,<br> Surrey GU8 5SZ</p>
+        </div>
+
+        <div class="footer-social">
+            <h4>Social Media</h4>
+            <div class="social-icons">
+              <a href="https://x.com/3dservicesltd" target="_blank" rel="noopener">
+                <img class="x" src="/images/X_logo.png" style="width: 20px; height: 20px;">
+              </a>
+              <a href="https://www.facebook.com/3dservices/"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://uk.linkedin.com/company/3d-services-south-east-ltd"><i class="fab fa-linkedin-in"></i></a>
+              <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+              <a href="https://www.instagram.com/3dservices_south_east_ltd/"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom container">
+      <p>© 2025 3D Services | Registered in England No. 12345678 | VAT No. 987654321</p>
+      <a href="#" class="back-to-top">Back to Top ↑</a>
+    </div>
+  </footer>
+
+  <!-- JS: Hamburger toggle -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+
+    //Close the menu when any link is clicked
+    const navItems = document.querySelectorAll('#mobile-nav a');
+
+    navItems.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('open');
+      });
+    });
+  </script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+    const caseSwiper = new Swiper('.case-studies-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        },
+        breakpoints: {
+        768: {
+            slidesPerView: 2
+        },
+        1024: {
+            slidesPerView: 3
+        }
+        }
+    });
+    </script>
+
+</body>
+</html>

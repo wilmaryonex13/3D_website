@@ -210,13 +210,13 @@ h1 { color: #02580a;
 
 
 /* Demo placeholders, replace with real images */
-.image-1 {
+/* .image-1 {
     background-image: url("https://wilmaryonex13.github.io/3D_website/images/Land_Surveys_1.jpg");
 }
 
 .image-2 {
     background-image: url("https://wilmaryonex13.github.io/3D_website/images/Land_Surveys_2.jpg");
-}
+} */
   
   /* Responsive fallback */
   @media (max-width: 768px) {

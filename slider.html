@@ -1,250 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Team Page with Responsive Bio Panel</title>
+  <meta charset="UTF-8" />
+  <title>Case Studies Admin</title>
   <style>
     body {
-      font-family: 'Raleway', sans-serif;
-      background: #f7f7f7;
-      margin: 0;
-      padding: 2rem;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #02580a;
-    }
-
-    .team-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-
-    .team-member {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
       padding: 1rem;
-      text-align: center;
-      width: 220px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
+      background: #f9f9f9;
     }
-
-    .team-member:hover {
-      transform: translateY(-5px);
-    }
-
-    .team-member img {
+    h1 { text-align: center; color: #02580a; }
+    form, .case-list { margin-top: 2rem; }
+    input, textarea {
       width: 100%;
-      max-width: 150px;
-      height: auto;
-      border-radius: 12px;
       margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
-
-    .team-member h3 {
-      margin: 0.5rem 0 0.2rem;
-      font-size: 1.2rem;
-      color: #034412;
-    }
-
-    .team-member p {
-      margin: 0.2rem 0;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.3);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease;
-      z-index: 999;
-    }
-
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .bio-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 0;
-      height: 100%;
-      background: #ffffff;
-      box-shadow: -3px 0 15px rgba(0,0,0,0.2);
-      overflow: hidden;
-      opacity: 0;
-      transition: width 0.5s ease, opacity 0.5s ease;
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .bio-panel.active {
-      width: 50vw;
-      opacity: 1;
-    }
-
-    .bio-content {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      opacity: 0;
-      transform: translateX(50px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      max-width: 80%;
-    }
-
-    .bio-panel.active .bio-content {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .bio-image {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .bio-text {
-      flex: 1;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 2rem;
+    button {
+      background: #02580a;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
       cursor: pointer;
-      color: #02580a;
+      margin-right: 1rem;
+      border-radius: 4px;
     }
-
-    .bio-text h3 {
-      color: #034412;
-      margin-bottom: 0.3rem;
+    button:hover { background: #14821f; }
+    .case-item {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
     }
-
-    .bio-text p {
-      color: #333;
-      margin-bottom: 0.7rem;
-      font-size: 0.95rem;
+    .case-item small {
+      display: block;
+      margin-top: 0.5rem;
+      color: #555;
     }
-
-    .bio-text a {
-      color: #02580a;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      .bio-panel.active {
-        width: 90vw;
-      }
-
-      .bio-content {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .bio-image {
-        margin-bottom: 1rem;
-      }
+    .actions {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
     }
   </style>
 </head>
 <body>
 
-  <h2>Meet the Team</h2>
-  <div class="team-grid">
-    <div class="team-member"
-         data-bio="Nick has led our finance and admin team for over 15 years, bringing innovation and structure to the heart of our company. He specializes in operational excellence and team leadership.">
-      <img src="https://via.placeholder.com/150" alt="Nick Smith">
-      <h3>Nick Smith</h3>
-      <p><strong>Managing Director</strong></p>
-      <p>nick@example.com</p>
-    </div>
+  <h1>Case Studies Admin Panel</h1>
 
-    <div class="team-member"
-         data-bio="Cliff oversees our CAD, research, and development initiatives. With 20+ years of experience, he continually brings fresh ideas and technical excellence to the forefront of our projects.">
-      <img src="https://via.placeholder.com/150" alt="Cliff Grant">
-      <h3>Cliff Grant</h3>
-      <p><strong>Senior Director</strong></p>
-      <p>cliff@example.com</p>
-    </div>
+  <form id="case-form">
+    <input type="text" id="title" placeholder="Title" required />
+    <input type="text" id="filename" placeholder="Filename (e.g., case_1.html)" required />
+    <input type="text" id="thumbnail" placeholder="Thumbnail path (e.g., images/Project_1.jpg)" required />
+    <textarea id="description" placeholder="Short description (optional)"></textarea>
+    <button type="submit">Add Case Study</button>
+  </form>
 
-    <div class="team-member"
-         data-bio="David leads our engineering and monitoring teams, ensuring our clients receive precise, innovative solutions. His expertise spans structural monitoring, surveying, and complex project management.">
-      <img src="https://via.placeholder.com/150" alt="David Gibbs">
-      <h3>David Gibbs</h3>
-      <p><strong>Senior Director</strong></p>
-      <p>david@example.com</p>
-    </div>
+  <div class="actions">
+    <button onclick="downloadJSON()">Download JSON</button>
+    <button onclick="loadSample()">Load Sample</button>
   </div>
 
-  <!-- Background overlay -->
-  <div id="overlay" class="overlay"></div>
-
-  <!-- Bio Side Panel -->
-  <div id="bio-panel" class="bio-panel">
-    <span class="close-btn" onclick="closeBio()">&times;</span>
-    <div class="bio-content">
-      <img id="bio-image" class="bio-image" src="" alt="Profile Image">
-      <div class="bio-text" id="bio-details"></div>
-    </div>
-  </div>
+  <div class="case-list" id="case-list"></div>
 
   <script>
-    const teamMembers = document.querySelectorAll('.team-member');
-    const bioPanel = document.getElementById('bio-panel');
-    const bioDetails = document.getElementById('bio-details');
-    const overlay = document.getElementById('overlay');
-    const bioImage = document.getElementById('bio-image');
+    let cases = [];
 
-    teamMembers.forEach(member => {
-      member.addEventListener('click', () => {
-        const name = member.querySelector('h3').innerText;
-        const title = member.querySelector('p strong').innerText;
-        const email = member.querySelectorAll('p')[1]?.innerText || '';
-        const imgSrc = member.querySelector('img').src;
-        const description = member.getAttribute('data-bio') || '';
+    const form = document.getElementById('case-form');
+    const list = document.getElementById('case-list');
 
-        bioDetails.innerHTML = `
-          <h3>${name}</h3>
-          <p><strong>${title}</strong></p>
-          <p>${description}</p>
-          <p><a href="mailto:${email}">${email}</a></p>
-        `;
-        bioImage.src = imgSrc;
-
-        bioPanel.classList.add('active');
-        overlay.classList.add('active');
-      });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const newCase = {
+        title: document.getElementById('title').value,
+        filename: document.getElementById('filename').value,
+        thumbnail: document.getElementById('thumbnail').value,
+        description: document.getElementById('description').value
+      };
+      cases.push(newCase);
+      renderCases();
+      form.reset();
     });
 
-    function closeBio() {
-      bioPanel.classList.remove('active');
-      overlay.classList.remove('active');
+    function renderCases() {
+      list.innerHTML = '';
+      cases.forEach((cs, index) => {
+        const div = document.createElement('div');
+        div.className = 'case-item';
+        div.innerHTML = `
+          <strong>${cs.title}</strong><br>
+          <small>File: ${cs.filename}</small>
+          <small>Thumbnail: ${cs.thumbnail}</small>
+          <small>${cs.description || ''}</small>
+          <button onclick="removeCase(${index})">Remove</button>
+        `;
+        list.appendChild(div);
+      });
     }
 
-    overlay.addEventListener('click', closeBio);
+    function removeCase(index) {
+      if (confirm('Remove this case study?')) {
+        cases.splice(index, 1);
+        renderCases();
+      }
+    }
+
+    function downloadJSON() {
+      const blob = new Blob([JSON.stringify(cases, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'case_studies.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function loadSample() {
+      cases = [
+        {
+          "title": "High-Precision Laser Scanning - Upper Woolhampton",
+          "thumbnail": "images/Project_1.jpg",
+          "description": "Heritage restoration survey in the Upper Woolhampton area.",
+          "filename": "case_1.html"
+        }
+      ];
+      renderCases();
+    }
   </script>
 
 </body>
