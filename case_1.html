@@ -84,7 +84,7 @@
 
               data.forEach(cs => {
                 // Exclude the current case study page
-                if (cs.filename === '/' + currentPage) return;
+                if (cs.filename === './' + currentPage) return;
 
                 const slide = document.createElement('div');
                 slide.className = 'swiper-slide';
