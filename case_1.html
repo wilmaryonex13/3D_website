@@ -6,9 +6,9 @@
   <title>Case Studies - Project 1</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/css/case_studies.css">
+  <link rel="stylesheet" href="./css/case_studies.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="icon" href="/images/favicon.png" type="image/png" /> 
+  <link rel="icon" href="./images/favicon.png" type="image/png" /> 
 </head>
 <body>
 
@@ -16,10 +16,10 @@
   <header class="navbar">
     <div class="container">
       <div class="logo">
-        <a href="/index.html">
-            <img src="/images/SigLogo_white.png" alt="3D Services Logo" />
+        <a href="./index.html">
+            <img src="./images/SigLogo_white.png" alt="3D Services Logo" />
           </a>
-          <a href="/index.html">
+          <a href="./index.html">
             <span class="brand-name">3D Services</span>
           </a>
       </div>
@@ -29,12 +29,12 @@
         <span></span>
       </div>
       <nav class="nav-links" id="mobile-nav">
-        <a href="/index.html#about">About</a>
-        <a href="/index.html#services">Services</a>
-        <a href="/index.html#sectors">Sectors</a>
-        <a href="/index.html#case_studies">Case Studies</a>
-        <a href="/team.html">Team</a>
-        <a href="/index.html#contact">Contact Us</a>
+        <a href="./index.html#about">About</a>
+        <a href="./index.html#services">Services</a>
+        <a href="./index.html#sectors">Sectors</a>
+        <a href="./index.html#case_studies">Case Studies</a>
+        <a href="./team.html">Team</a>
+        <a href="./index.html#contact">Contact Us</a>
       </nav>
     </div>
   </header>
@@ -48,16 +48,16 @@
 
         <section class="case-study-content">
             <p>Our team was commissioned to conduct a detailed laser scanning survey on a historic church situated in the Upper Woolhampton region. The client required accurate architectural documentation, including an internal floor plan, a tiling layout, and a sectional view of the front part of the church. The survey was intended to support restoration planning and ensure that all design decisions would be based on precise, up-to-date spatial data.</p>
-            <img src="/images/file_name.jpg" alt="Case Study Image 1" />
+            <img src="./images/file_name.jpg" alt="Case Study Image 1" />
 
             <p>To capture the intricate interior geometry, we deployed the Trimble X7 terrestrial laser scanner. This instrument was selected for its speed, precision, and real-time registration capabilities—crucial in a heritage setting where minimizing disruption is key. The entire survey was referenced to the Ordnance Survey National Grid using GPS control points, ensuring the resulting datasets aligned with national mapping standards for further planning or integration with other spatial datasets.</p>
-            <img src="/images/file_name.jpg" alt="Case Study Image 2" />
+            <img src="./images/file_name.jpg" alt="Case Study Image 2" />
 
             <p>The scanning process produced a comprehensive point cloud with millimetre-level accuracy. In addition to traditional 2D outputs, such as the floor plan and section, we delivered a tiling plan capturing the complex layout of the internal floor tiles—critical for restoration and documentation purposes. The raw scan data was processed using Trimble RealWorks, and final deliverables were exported in CAD-compatible formats to integrate seamlessly into the client’s architectural workflow.</p>
-            <img src="/images/file_name.jpg" alt="Case Study Image 3" />
+            <img src="./images/file_name.jpg" alt="Case Study Image 3" />
 
             <p>To enhance the deliverables, we created a 360-degree virtual tour of the scanned area. This immersive walkthrough allowed the client and their team to revisit the space remotely at any time, reducing the need for return site visits and streamlining coordination with contractors and heritage consultants. The tour proved especially valuable for visualizing fine architectural details and spatial relationships without requiring physical access to the site.</p>
-            <img src="/images/file_name.jpg" alt="Case Study Image 4" />
+            <img src="./images/file_name.jpg" alt="Case Study Image 4" />
 
             <h2>Project Outcome</h2>
             <p>The survey provided the client with a precise, georeferenced digital record of the church’s interior—supporting both immediate design requirements and long-term preservation goals. Our team’s combination of high-end technology, accurate geospatial referencing, and detailed deliverables ensured that every aspect of the space was captured faithfully and ready for restoration use.</p>
@@ -76,7 +76,7 @@
         <div class="swiper-wrapper" id="case-cards-container">
 
         <script>
-          fetch('/case_studies.json')
+          fetch('./case_studies.json')
             .then(response => response.json())
             .then(data => {
               const container = document.getElementById('case-cards-container');
@@ -170,7 +170,7 @@
           <div class="privacy-agreement">
             <small>
               By submitting this form, you agree to our
-              <a href="privacy.html" target="_blank">Privacy Policy</a>.
+              <a href="./privacy.html" target="_blank">Privacy Policy</a>.
             </small>
           </div>
 
@@ -185,10 +185,10 @@
   <footer class="site-footer">
     <div class="footer-top">
       <div class="container footer-grid">
-        <a class="footer-logo-href" href="/index.html">
+        <a class="footer-logo-href" href="./index.html">
             <div class="footer-logo-section">
                 <div class="logo-combo">
-                    <img src="/images/SigLogo_white.png">
+                    <img src="./images/SigLogo_white.png">
                     <div>
                         <h2 class="footer-logo"><span class="highlight">3D Services</span> </h2>
                     </div>
@@ -212,7 +212,7 @@
             <h4>Social Media</h4>
             <div class="social-icons">
               <a href="https://x.com/3dservicesltd" target="_blank" rel="noopener">
-                <img class="x" src="/images/X_logo.png" style="width: 20px; height: 20px;">
+                <img class="x" src="./images/X_logo.png" style="width: 20px; height: 20px;">
               </a>
               <a href="https://www.facebook.com/3dservices/"><i class="fab fa-facebook-f"></i></a>
               <a href="https://uk.linkedin.com/company/3d-services-south-east-ltd"><i class="fab fa-linkedin-in"></i></a>
