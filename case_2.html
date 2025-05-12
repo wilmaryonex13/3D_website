@@ -76,47 +76,53 @@
       <div class="swiper case-studies-swiper">
         <div class="swiper-wrapper" id="case-cards-container">
 
-        <script>
-          fetch('./case_studies.json')
-            .then(response => response.json())
-            .then(data => {
-              const container = document.getElementById('case-cards-container');
-              const currentPage = window.location.pathname.replace(/^\/+/, ''); // Remove leading slashes
+      <script>
+        fetch('./case_studies.json')
+          .then(response => response.json())
+          .then(data => {
+            const container = document.getElementById('case-cards-container');
 
-              data.forEach(cs => {
-                // Exclude the current case study page
-                if (cs.filename === './' + currentPage) return;
+            // Normalize the current page path
+            const currentPage = window.location.pathname.replace(/^.*\//, '').toLowerCase();
 
-                const slide = document.createElement('div');
-                slide.className = 'swiper-slide';
-                slide.innerHTML = `
-                  <a href="${cs.filename}">
-                    <div class="case-study-card">
-                      <img src="${cs.thumbnail}" alt="${cs.title}" />
-                      <div class="case-info">
-                        <h3>${cs.title}</h3>
-                        <p>${cs.description || ''}</p>
-                      </div>
+            data.forEach(cs => {
+              // Normalize the filename from JSON
+              const filename = cs.filename.replace(/^.*\//, '').toLowerCase();
+
+              // Skip the current case
+              if (filename === currentPage) return;
+
+              const slide = document.createElement('div');
+              slide.className = 'swiper-slide';
+              slide.innerHTML = `
+                <a href="${cs.filename}">
+                  <div class="case-study-card">
+                    <img src="${cs.thumbnail}" alt="${cs.title}" />
+                    <div class="case-info">
+                      <h3>${cs.title}</h3>
+                      <p>${cs.description || ''}</p>
                     </div>
-                  </a>
-                `;
-                container.appendChild(slide);
-              });
-
-              new Swiper('.case-studies-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 10,
-                pagination: {
-                  el: '.swiper-pagination',
-                  clickable: true,
-                },
-                breakpoints: {
-                  768: { slidesPerView: 2 },
-                  1024: { slidesPerView: 3 }
-                }
-              });
+                  </div>
+                </a>
+              `;
+              container.appendChild(slide);
             });
-        </script>
+
+            new Swiper('.case-studies-swiper', {
+              slidesPerView: 1,
+              spaceBetween: 10,
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+              breakpoints: {
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+              }
+            });
+          });
+      </script>
+
         </div>
         
         <br>
