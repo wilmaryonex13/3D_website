@@ -429,6 +429,27 @@
     margin-bottom: 1.2rem;
     text-align: justify;
   }
+
+  @media (max-width: 520px) {
+    .about h2 {
+      text-align: center;
+    }
+
+    .profile {
+      text-align: justify;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 90vw;
+      margin: 0 auto;
+    }
+
+    .profile p {
+      text-align: justify;
+      text-align-last: center;
+    }
+  }
+
   
   .img-holder {
     background-size: cover;
